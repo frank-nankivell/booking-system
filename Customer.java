@@ -15,6 +15,7 @@ public class Customer {
 		     this.lastName = lastName;
 		     this.email = email;
 		   }
+		   // Accessor for firstName
 		   public String getFirstName()
 		   {
 		     return firstName;
@@ -29,6 +30,11 @@ public class Customer {
 		   public String getEmail()
 		   { 
 		       return email;
+		   }
+		   // method to get full name
+		   public void fullName(String name)
+		   {
+			   name = (firstName + lastName);
 		   }
 		     
 		   // Accessor for ID generator

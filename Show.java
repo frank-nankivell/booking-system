@@ -27,6 +27,9 @@ public class Show
 			{
 				filmTime = newfilmTime;
 			}
-			
+			// string to string method for class
+			public String toString() {
+			    return filmPrice + ", " + filmTime;
+			}
 
 		}
