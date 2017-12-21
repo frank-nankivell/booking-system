@@ -32,9 +32,10 @@ public class Customer {
 		       return email;
 		   }
 		   // method to get full name
-		   public void fullName(String name)
+		   public String fullName()
 		   {
-			   name = (firstName + lastName);
+			   String name = (firstName + lastName);
+			   return name;
 		   }
 		     
 		   // Accessor for ID generator
