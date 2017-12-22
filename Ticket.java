@@ -14,31 +14,58 @@ public class Ticket {
 	 * Cost to access cost
 	 
 	 */
+	
+	
     private Customer customer;
-    private Film film;
-	private double showTime;
-	private Date showDate;
+    
+    private ArrayList<Film> film = new ArrayList<>();
+    private ArrayList<Seat> seat = new ArrayList<>();
+    
+	// to check ticketBooked
+    private boolean ticketBooked = false;
+    
+    private Date showDate;
+   
+    // to choose enter number of seats
 	private int seatNo;
+	
+	// to choose payment type
 	private int paymentType;
 	
+	// enter amount of money
+	private double money;
+
 	
-    private boolean ticketBooked = false;
-	Date timenow = new Date();
+	
+	
+	// to be updated from method
+	private double price;
+	// to be updated from method
+	private double showTime;
+    Date timenow = new Date();
 	
 	// Constructor for Ticket class
-    public Ticket(Customer customer, Film film, double ShowTime, Date showDate, int seatNo, int PaymentType, int paymentType, double showTime)
+    public Ticket (Customer customer, int paymentType, double money, int seatNo) // 
     {
     		this.customer = customer;
-    		this.film = film;
-    		this.showTime = showTime;
-    		this.showDate = showDate;
+    		if (paymentType < 0 && paymentType > 2) {
+   	         throw new IllegalArgumentException("Payment Type must be a 1 or 2");
+   	      } else {
+   	         this.paymentType= paymentType;
+   	      }
+    		this.money = money;
     		this.seatNo = seatNo;
-    		this.paymentType = paymentType;
+    		
+    	
     }
+    
+    
+    
     
 	// method to set film Name. Need to return id to archive
 		public void selectFilm()
 		{
+			
 			
 			
 		}
@@ -48,41 +75,51 @@ public class Ticket {
     			
 		}
 
-		/* method to select film Time. Checks input against time variable in show
-		 *  return cost and time
+		/* method to select film time frame
+		 * time then updates the price and time of show
 		 */
-		public void selectShowTime(double time)
-		{
-			List<Show> shows = new ArrayList<>(4);
+		public void selectShowTime(String time)
+		{	
+			System.out.println("Enter time for the show: 'Morning', 'Afternoon', 'Evening Early', 'Evening Late'");
+			System.out.println();
 			
-			if (time
-			{
-				
-				
-			}
-				
-			
+			Show show = new Show();
+			//show.displayTimeAll();
+			show.selectTime(time);
+			price = show.getPrice();
 		}
-		
+	
 		// method to set number of seats
 		public void numberofSeats(int seats)
 		{
+			seat.g
 
 		}
 	
 		
 		// method to choose payment type	
 		public void selectPayment(int paymentType)
-		
 		{
-			switch(paymentType)
+			System.out.println("Enter a 1 for Credit Card Payment or 2 for Cash Payment");
+			System.out.println("If 1, provide details");
+				switch (paymentType) 
+				{
+					case 1:
+					System.out.println("Credit Card Payment chosen");
+					CreditCardPayment credit = new CreditCardPayment(price);
+					credit.makePayment(money);
+					
+					break;
+					
+					case 2:
+					System.out.println("Cash Payment chosen");
+					Payment payment = new Payment(price);
+					payment.makePayment(money);
+					break;
+				}
+				
 			
-				case:1
-			
-		}
-		
-		
-		
+		}		
 		// method to confirm date of Ticketbooking is today. 
 		public Date bookingDate()
 		{
@@ -90,19 +127,27 @@ public class Ticket {
 		}
 		
 		
+		// method to check ticket correctly purchased
+		public boolean ticketBooked()
+		{
+			ticketBooked = true;
+		}
+		
 		// method to print out ticket
 		public void printTicket()
 		{
+			if (ticketBooked = true)
+			{
 			
-			System.out.println("Booking made date: " + timenow.toString()); // stating todays date for booking
-			System.out.println(customer.fullName()); // stating customers name
-			
-			System.out.println("Film Name: " + film.getfilmName()); // stating film selected
-			System.out.println("Total number of seats:" ); // to do total number of seats
-			System.out.println("Seat"); // to do seat number and seat type
-			System.out.println("Payment type: "); // to do - payment type
-			System.out.println(); // reciept info  - to do
-			System.out.println();
+				System.out.println("Booking made date: " + timenow.toString()); // stating todays date for booking
+				System.out.println(customer.fullName()); // stating customers name
+				System.out.println("Film Name: " + film.getfilmName()); // stating film selected
+				System.out.println("Total number of seats:" ); // to do total number of seats
+				System.out.println("Seat"); // to do seat number and seat type
+				System.out.println("Payment type: "); // to do - payment type
+				System.out.println(); // reciept info  - to do
+				System.out.println();
+			}
 			
 		}
 				

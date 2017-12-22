@@ -1,40 +1,49 @@
 public class Payment 
 {
-    Ticket ticket;
+    private boolean paymentSuccess = false;
     private double purchase;
-	private double amountPaid;
 	
-	public Payment(double amountPaid, Ticket ticket)
+    // constructor for standard payment class
+	public Payment(double purchase)
 	{
-		ticket = this.ticket;
-		amountPaid = this.amountPaid;
+		this.purchase = purchase;
 	}
-	
+	// method to update cost from ticket class
 	public void calculateCost() 
 	{
-		//possibly not correct as only takes 1 ticket cost
-		purchase = ticket.getTicketCost();
 	}
 	
-	public void makePayment(double amountPaid)
+	/* method to process payment
+	 * loops until amount entered is amount of cost
+	 */
+	public void makePayment(double amount)
 	{
-		boolean paymentSuccess = false;
-		
-			if (paymentSuccess==false)
+			while (paymentSuccess==false)
 			{
-				if(amountPaid == purchase) 
+				if(amount == purchase) 
 				{
 				System.out.println("Payment made succesfully!");
 				paymentSuccess = true;
+				printReciept();
 				}
-		else
-		{ 
-			double costRemaining = purchase-amountPaid;	
-			System.err.println("Insufficient payment made, please enter" + costRemaining);
-			//Comment: need some way of looping back round here.
-		}
+			else
+				{ 
+				double costRemaining = purchase-amount;	
+				System.err.println("Insufficient payment made, please enter" + costRemaining);
+				paymentSuccess = false;
+				}
+			}
 	}
+	// method to print reciept
+	public void printReciept()
+	{
+		System.out.println("Reciept of ticket purchase is for amount of " + purchase);
+		System.out.println();
+		System.out.println("Thank you ");
 	}
+	
 }
+
+
 
 		

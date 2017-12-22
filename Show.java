@@ -7,9 +7,11 @@ public class Show
 	private HashMap <String, Double> showPrice = new HashMap<>();
 	private HashMap< String, Double> showTime = new HashMap<>();
 	
-	/* constructor to take values for time and Price
-	 * 
-	 */
+	// value to store selected price
+	private double price;
+	/* constructor to take store all values for time and price of shows
+	*/
+	
 	public Show()
 	{
 		showPrice.put(val[0], 5.99);
@@ -42,20 +44,31 @@ public class Show
 		     String value = showTime.get(key).toString();
 		     System.out.println("" + (i + 1) + "" + key + " " + value);
 			}
-	} 
+	}
+
+	
 	// method to print Time from hashMap if equal to option!!!!
 		public void selectTime(String option)
 		{ 
 			for (int i = 0; i < val.length; i++) 
 				if(option == val[i])
 				{
-				{
-			        String key =  val[i];
-			        String value = showTime.get(key).toString();
-			        System.out.println(value);
+					{
+				        String key =  val[i];
+				        String time = showTime.get(key).toString();
+				        double x  = showPrice.get(key);
+				        System.out.println(time);
+				        price = x;
+					}
 				}
 		}
+		
+		// Accessor for price
+		public double getPrice()
+		{
+		return price;
 		}
+		
 }
 	
 	

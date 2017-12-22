@@ -7,12 +7,13 @@ public class Seat {
 	
 	public int []seats = new int[50];
 	private Screen screen;
+	// Constructor for Seat
 	
 	public Seat(Screen screen)
 	{
-		this.screen = screen;
+		this.setScreen(screen);
 	}
-
+//	accessor for seat
 	public int [] getSeat() {
 		return getSeat();
 	}
@@ -20,6 +21,15 @@ public class Seat {
 	public void setSeat(int [] seat) {
 		this.seats = seat;
 	}
-		
+
+	public Screen getScreen() {
+		return screen;
+	}
+
+	public void setScreen(Screen screen) {
+		this.screen = screen;
+	}
+	
+	
 
 }
