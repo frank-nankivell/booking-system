@@ -4,7 +4,6 @@ public class Seat {
 	/*private int for number of seats
 	 * private screen - a single screen available 
 	 */
-	
 	public int []seats = new int[50];
 	private Screen screen;
 	// Constructor for Seat

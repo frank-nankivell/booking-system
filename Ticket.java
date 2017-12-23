@@ -43,40 +43,46 @@ public class Ticket {
 	// to be updated from method
 	private double showTime;
     Date timenow = new Date();
+
+	private Date date;
 	
 	// Constructor for Ticket class
     public Ticket (Customer customer, int paymentType, double money, int seatNo) // 
     {
     		this.customer = customer;
-    		if (paymentType < 0 && paymentType > 2) {
-   	         throw new IllegalArgumentException("Payment Type must be a 1 or 2");
-   	      } else {
-   	         this.paymentType= paymentType;
-   	      }
+    		this.paymentType = paymentType;
     		this.money = money;
     		this.seatNo = seatNo;
     		
     	
-    }
-    
-    
-    
-    
+    }    
 	// method to set film Name. Need to return id to archive
 		public void selectFilm()
 		{
-			
-			
-			
+			this.film = film;
+
 		}
+		
+		
     		// method to set show date
     		public void selectShowDate(Date date)
 		{
+    			this.date = date;
     			
 		}
 
 		/* method to select film time frame
 		 * time then updates the price and time of show
+		 */
+	
+		// method to set number of seats
+		public void numberofSeats(int seats)
+		{
+
+		}
+	
+		/* method to select film time.
+		 * return price and update to Payment classes
 		 */
 		public void selectShowTime(String time)
 		{	
@@ -88,35 +94,40 @@ public class Ticket {
 			show.selectTime(time);
 			price = show.getPrice();
 		}
-	
-		// method to set number of seats
-		public void numberofSeats(int seats)
-		{
-			seat.g
-
-		}
-	
 		
 		// method to choose payment type	
 		public void selectPayment(int paymentType)
 		{
 			System.out.println("Enter a 1 for Credit Card Payment or 2 for Cash Payment");
 			System.out.println("If 1, provide details");
-				switch (paymentType) 
-				{
-					case 1:
-					System.out.println("Credit Card Payment chosen");
-					CreditCardPayment credit = new CreditCardPayment(price);
-					credit.makePayment(money);
-					
-					break;
-					
-					case 2:
-					System.out.println("Cash Payment chosen");
-					Payment payment = new Payment(price);
-					payment.makePayment(money);
-					break;
-				}
+			boolean check = false;
+			
+			while( check = false)
+			{
+				if (paymentType < 0 && paymentType > 2) {
+		   	         throw new IllegalArgumentException ("Payment Type must be a 1 or 2");
+		   	      } else {
+		   	    	  
+		   	      }
+		   	    	  	check = true;
+					switch (paymentType) 
+					{
+						case 1:
+						System.out.println("Credit Card Payment chosen");
+						CreditCardPayment credit = new CreditCardPayment(price);
+						credit.makePayment(money);
+						ticketBooked();
+						
+						break;
+						
+						case 2:
+						System.out.println("Cash Payment chosen");
+						Payment payment = new Payment(price);
+						payment.makePayment(money);
+						ticketBooked();
+						break;
+					}
+		   	      }
 				
 			
 		}		
@@ -125,12 +136,11 @@ public class Ticket {
 		{
 			return timenow;
 		}
-		
-		
+	
 		// method to check ticket correctly purchased
 		public boolean ticketBooked()
 		{
-			ticketBooked = true;
+			return ticketBooked = true;
 		}
 		
 		// method to print out ticket
