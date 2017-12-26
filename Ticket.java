@@ -12,32 +12,19 @@ public class Ticket {
 	 * Private field seatNo to request number of seats
 	 * Private field paymentType to select paymemt Type
 	 * Cost to access cost
-	 
 	 */
-	
-	
+
     private Customer customer;
-    
-    private ArrayList<Film> film = new ArrayList<>();
-    private ArrayList<Seat> seat = new ArrayList<>();
-    
 	// to check ticketBooked
     private boolean ticketBooked = false;
-    
+    // date of the show
     private Date showDate;
-   
     // to choose enter number of seats
 	private int seatNo;
-	
 	// to choose payment type
 	private int paymentType;
-	
 	// enter amount of money
 	private double money;
-
-	
-	
-	
 	// to be updated from method
 	private double price;
 	// to be updated from method
@@ -45,42 +32,43 @@ public class Ticket {
     Date timenow = new Date();
 
 	private Date date;
+	private int filmselect;
+	private int vip;
+	private int standard;
+	private String time;
+	private boolean check;
 	
 	// Constructor for Ticket class
-    public Ticket (Customer customer, int paymentType, double money, int seatNo) // 
+    public Ticket (Customer customer, int filmselect, int vip, int standard, String time, int paymentType, double money, Date date) // 
     {
-    		this.customer = customer;
-    		this.paymentType = paymentType;
-    		this.money = money;
-    		this.seatNo = seatNo;
-    		
+    		this.customer = customer; // the customer booking the show
+    		this.filmselect = filmselect; // the film the customer wants to see
+    		this.vip = vip; // number of vip seats the customer wants to book
+    		this.standard = standard; // number of standard seats the customer wants to book
+    		this.time = time; // timing of the show
+    		this.paymentType = paymentType; // payment type
+    		this.money = money; // payment amount
     	
-    }    
+    }
+    
+	// method to confirm date of Ticketbooking is today. 
+	public Date bookingDate()
+	{
+		return timenow;
+	}
+  
 	// method to set film Name. Need to return id to archive
 		public void selectFilm()
-		{
-			this.film = film;
-
+		{	
+			
 		}
-		
-		
-    		// method to set show date
-    		public void selectShowDate(Date date)
-		{
-    			this.date = date;
-    			
-		}
-
-		/* method to select film time frame
-		 * time then updates the price and time of show
-		 */
 	
 		// method to set number of seats
-		public void numberofSeats(int seats)
+		public void numberofSeats(int x)
 		{
-
+			
 		}
-	
+
 		/* method to select film time.
 		 * return price and update to Payment classes
 		 */
@@ -95,12 +83,12 @@ public class Ticket {
 			price = show.getPrice();
 		}
 		
-		// method to choose payment type	
+		// method to choose payment type	and process payment
 		public void selectPayment(int paymentType)
 		{
 			System.out.println("Enter a 1 for Credit Card Payment or 2 for Cash Payment");
 			System.out.println("If 1, provide details");
-			boolean check = false;
+			check = false;
 			
 			while( check = false)
 			{
@@ -130,18 +118,22 @@ public class Ticket {
 		   	      }
 				
 			
-		}		
-		// method to confirm date of Ticketbooking is today. 
-		public Date bookingDate()
-		{
-			return timenow;
 		}
-	
+		
+		// method to set show date
+		public void selectShowDate(Date date)
+		{
+			this.date = date;
+			
+		}
 		// method to check ticket correctly purchased
 		public boolean ticketBooked()
 		{
 			return ticketBooked = true;
 		}
+		
+		
+		
 		
 		// method to print out ticket
 		public void printTicket()

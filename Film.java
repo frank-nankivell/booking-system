@@ -1,33 +1,22 @@
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class Film {
-	
-	// private fields for film name, time and price
+
 	private String filmName;
-	private static AtomicInteger ID_GENERATOR = new AtomicInteger(1000);
-	
-		public Film(String filmName)
-		{
-			this.filmName = filmName;
+	private int filmID;
+
+		// Accessor filmID
+		public int getFilmID() {
+			return filmID;
 		}
-		// Accessor for filmName
-		public String getfilmName()
-		{
+		// Mutator filmID
+		public void setFilmID(int filmID) {
+			this.filmID = filmID;
+		}
+		// Accessor filmName
+		public String getFilmName() {
 			return filmName;
 		}
-		// Mutator for FilmName
-		public void newFilmName(String newFilmName)
-		{
-			filmName = newFilmName;	
-		}
-		// Accessor for ID generator
-		public static AtomicInteger getID_GENERATOR() 
-		{
-			return ID_GENERATOR;
-		}
-		// mutator for ID generator
-		public static void setID_GENERATOR(AtomicInteger iD_GENERATOR) 
-		{
-				ID_GENERATOR = iD_GENERATOR;
+		// Mutator filmName
+		public void setFilmName(String filmName) {
+			this.filmName = filmName;
 		}
 }
