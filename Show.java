@@ -9,6 +9,7 @@ public class Show
 	
 	// value to store selected price
 	private double price;
+	private double time;
 	/* constructor to take store all values for time and price of shows
 	*/
 	
@@ -68,7 +69,11 @@ public class Show
 		{
 		return price;
 		}
-		
+		// Accessor for time
+		public double getTime()
+		{
+			return time;
+		}
 }
 	
 	

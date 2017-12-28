@@ -1,4 +1,4 @@
-import java.util.Date;
+
 public class Review
 {
 	/* value field is rating of the film
@@ -7,26 +7,23 @@ public class Review
 	 * customer field is the customer completing the review
 	 * reviewComplete checks if the review has been completed
 	 */
+	
+	private Film film;
+	private Ticket ticket;
 	private int value;
 	private String description;
-	private Film film;
-	private Customer customer;
-	private Ticket ticket;
+
 	
-	private boolean reviewComplete = false;
+	private boolean reviewComplete;
 	
-	// constructor for review class
-	public Review(String description, int value, Film film, Customer customer, Ticket ticket)
+	// constructor for review class. need to amend to check value is 1-5
+	public Review (Film film, Ticket ticket, int value, String description)
 	{
-		this.description = description;
-		if (value < 0 && value > 5) {
-	         throw new IllegalArgumentException("Review must be a numberbetween 1 and 5");
-	      } else {
-	         this.value= value;
-	      } 
 		this.film = film;
-		this.customer = customer;
 		this.ticket = ticket;
+		this.description = description;
+		this.value = value;
+		reviewComplete = false;
 	}
 	
 // Accessor for description of review
@@ -42,27 +39,20 @@ public class Review
 	}
 // Accessor for rating value, int 'value'
 		public int getValue() 
-		{
+	{
 		return value;
-		}
+	}
 		
-// Accessor for film review was based on
-		public String getFilmName()
-		{
-			String value = film.getfilmName();
-			return value;
-		}
-		
-/* Mutator for rating value, int 'value'
- * includes functionality to check if value is between 0 
- */
+	/* Mutator for rating value, int 'value'
+	 * includes functionality to check if value is between 0 
+	 */
 	   	public void setValue(int newValue) 
 	   	{
 	   	 if (newValue < 0 || newValue > 5) 
 	   	 {
 	         throw new IllegalArgumentException("New review must be a number between 1 and 5");
 	      } else {
-	      value = newValue;
+	      value = newValue; 
 	    }
 	   }
 	   	
@@ -72,22 +62,17 @@ public class Review
  */
 	public void checkReview() 
 	{
-		Date timenow = new Date();
-		
-		if (timenow > ticket.bookingDate())
-		{
 			if ((description.length() <= 5) && (value < 0 && value > 5))
 			{
 				reviewComplete = true;
+				printOut();
+				film.setRevVal(value);
+				film.incrementRev();
 			}
-				else 
-			{
-				reviewComplete  = false;
+					else 
+				{
+					reviewComplete  = false;
 			}
-		}
-		{
-			reviewComplete = false;
-		}
 			
 	}
 
@@ -95,10 +80,7 @@ public class Review
 	public void printOut() 
 	{
 		if(reviewComplete == true) 
-		{
-
-			System.out.println("This review was made by: " + customer.fullName());
-			System.out.println("This review was for the film" + film.getfilmName());
+		{;
 			System.out.println("The review said the film was: " + description);
 			System.out.println("The rating was: " + value);
 			}
