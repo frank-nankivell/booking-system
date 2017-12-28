@@ -14,11 +14,13 @@ public class Screen
 	}
 
 	// method to book seats for Cinema per Screen
+	
+	// 1 = vip and 2 = standard
 	public void seatBook(int choice)
 	{
 	// exception to check value is a 1 or 2
-		if (choice <= 1 && choice >= 2) {
-	        throw new IllegalArgumentException("Value must be a 1 or 2!");
+		if (choice != 1 || choice != 2) {
+	        throw new IllegalArgumentException("Screen selection Value must be a 1 or 2!");
 	     } else {
 			// loop to start seat booking
 				while (choice!= 0) {

@@ -7,9 +7,8 @@ public class Review
 	 * customer field is the customer completing the review
 	 * reviewComplete checks if the review has been completed
 	 */
-	
+	private Customer customer;
 	private Film film;
-	private Ticket ticket;
 	private int value;
 	private String description;
 
@@ -17,10 +16,10 @@ public class Review
 	private boolean reviewComplete;
 	
 	// constructor for review class. need to amend to check value is 1-5
-	public Review (Film film, Ticket ticket, int value, String description)
+	public Review (Customer customer, Film film, int value, String description)
 	{
+		this.setCustomer(customer);
 		this.film = film;
-		this.ticket = ticket;
 		this.description = description;
 		this.value = value;
 		reviewComplete = false;
@@ -75,6 +74,14 @@ public class Review
 			}
 			
 	}
+	// accessor for Customer
+	public Customer getCustomer() {
+		return customer;
+	}
+	// mutator for customer
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 
 // method to print out current review and value of rating
 	public void printOut() 
@@ -85,4 +92,6 @@ public class Review
 			System.out.println("The rating was: " + value);
 			}
 		}
+
+	
 }

@@ -2,9 +2,10 @@ public class Ticket {
 	
 	private Film film;
 	private Customer customer;
-	private Date showDate;
+	private Date date;
 	private double money;
 	private int ticketID;
+	private int seat;
 	
 	
 	// to store update prices and times
@@ -13,19 +14,21 @@ public class Ticket {
 	private boolean check;
 
 	// Constructor for Ticket class
-    public Ticket (Customer customer, Date showDate, Film film, int seat, String time, int paymentType, double money) // 
+    public Ticket (int ticketID, Customer customer, Date date, Film film, int seat, String time, int paymentType, double money) // 
     {
+    		this.ticketID = ticketID;
     		this.film = film;
-    		this.showDate = showDate;
+    		this.date = date;
     		this.customer = customer;
-    		this.selectSeats(seat);
+    		this.seat = seat;
     		this.selectShowTime(time);
     		this.selectPayment(paymentType);
     		this.money = money;
     		this.check = false;
     		
+    		System.out.println("Ticket process for ticket ID: " + ticketID + "   customer name" + customer.fullName()); 		
     }
-    // show the film informaation update on the count per ticket. 
+    // show the film information update on the count per ticket. 
    
   
 	// method to set film Name
@@ -39,7 +42,7 @@ public class Ticket {
 		public void selectSeats(int seat)
 		{
 			Screen screen = new Screen();
-			System.out.println("Enter 1 for a VIP Seat, 2 for a standard seat");
+			System.out.println("Attempting to book Seat for  " + customer.fullName());
 			System.out.println();
 			screen.seatBook(seat);	
 		}
@@ -124,7 +127,7 @@ public class Ticket {
 				System.out.println("This ticket cost " + price + "Paid in full");
 				System.out.println("Showing is" + time);
 				System.out.println("Film Name: " +film.getFilmName() ); // stating film selected
-				System.out.println("Date of film" + showDate);
+				System.out.println("Date of film" + date);
 
 			}
 		}
