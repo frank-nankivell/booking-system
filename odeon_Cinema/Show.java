@@ -1,18 +1,21 @@
+package odeon_Cinema;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Show 
 {
 	
 	private String[] val = {"Morning","Afternoon","Evening Early", "Evening Late"};
+
 	private HashMap <String, Double> showPrice = new HashMap<>();
+
 	private HashMap< String, Double> showTime = new HashMap<>();
 	
 	// value to store selected price
 	private double price;
+
 	private double time;
-	/* constructor to take store all values for time and price of shows
-	*/
-	
+
 	public Show()
 	{
 		showPrice.put(val[0], 5.99);
@@ -43,10 +46,9 @@ public class Show
 		{
 		     String key =  val[i];
 		     String value = showTime.get(key).toString();
-		     System.out.println("" + (i + 1) + "" + key + " " + value);
+		     System.out.println("[" + (i + 1) + "] " + key + " " + value);
 			}
 	}
-
 	
 	// method to print Time from hashMap if equal to option!!!!
 		public void selectTime(String option)
@@ -58,18 +60,40 @@ public class Show
 				        String key =  val[i];
 				        String time = showTime.get(key).toString();
 				        double x  = showPrice.get(key);
-				        System.out.println(time);
+				        System.out.println("Time selected is: " + time); 
 				        price = x;
+				        System.out.println("The" + time + " O'clock show costs: " + price + "");
 					}
 				}
 		}
 		
+		// method check if value is present within list
+		public boolean checkShow(String option)
+		{
+			if(Arrays.asList(val).contains(option))
+			{
+				return true;
+			}
+			{
+				return false;
+			}
+		}
+		
+		
 		// Accessor for price
+		/**
+		 * @return
+		 * @uml.property  name="price"
+		 */
 		public double getPrice()
 		{
 		return price;
 		}
 		// Accessor for time
+		/**
+		 * @return
+		 * @uml.property  name="time"
+		 */
 		public double getTime()
 		{
 			return time;
