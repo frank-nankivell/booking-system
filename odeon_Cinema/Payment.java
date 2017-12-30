@@ -2,7 +2,7 @@ package odeon_Cinema;
 
 import java.util.Calendar;
 
-public class Payment 
+public abstract class Payment 
 {
 
     private boolean paymentSuccess;
@@ -10,9 +10,9 @@ public class Payment
     private double purchase;
     private double bal;
 
-    private Film film; 
-    private Date ticketDate;
-    private Customer customer;
+    Film film; 
+    Date ticketDate;
+    Customer customer;
     
     private Calendar cal = Calendar.getInstance();
 	
@@ -26,11 +26,10 @@ public class Payment
 		this.paymentSuccess = false;
 	}
 
-	
-	
 	/* method to process payment
 	 * loops until amount entered is amount of cost
 	 */
+	
 	public void makePayment(double amount)
 	{	
 				 if (paymentSuccess==false)
@@ -67,33 +66,19 @@ public class Payment
 		if(a.equals(b)) // checks if todays month is the month the ticket was made for
 		film.archiveIncome(purchase);
 	}
-	
 
-	// Method to update customers balance.
-	// Needs to vary for credit card and cash payment!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	public void updateBalCustomer() 
-	{
-		bal = amount-purchase;
-		customer.setCash(bal);
-		
-	}
+	public abstract void updateBalCustomer();
 
 	// method to print reciept
-	public void printReciept()
+	public abstract void printReciept();
 	{
-		System.out.println("Reciept of ticket purchase is for amount of " + purchase);
-		System.out.println();
-		System.out.println("Thank you ");
 	}
-
 
 	//
 	public Customer getCustomer() {
 		return customer;
 	}
-
-
-
+	//
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}

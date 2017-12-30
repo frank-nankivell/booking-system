@@ -1,9 +1,8 @@
 package odeon_Cinema;
 import java.util.Map.Entry;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.*;
-
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 
 public class TestInsert {
 	
@@ -85,16 +84,37 @@ public class TestInsert {
 	Date d20 = new Date("04.01.2018");
 	Date d21 = new Date("05.01.2018");
 	
+	// 15 tickets
+	
+	Ticket t1 = new Ticket(001, c1, d1, f1, 1,"Morning", 1); // ticket for customer1, vip
+	Ticket t2 = new Ticket(002, c2, d2, f2, 2,"Afternoon", 1); //ticket for customer2, vip
+	Ticket t3 = new Ticket(003, c3, d3, f3, 1,"Evening Early", 1); // ticket for customer3, vip
+	Ticket t4 = new Ticket(004, c4, d4 , f1, 1,"Evening Late", 1); // ticket for customer 4, vip
+	Ticket t5 = new Ticket(005, c5, d5 , f5, 1,"Morning", 1); // // ticket for customer 5, vip
+	Ticket t6 = new Ticket(006, c6, d6 , f1, 1,"Afternoon", 1);
+	Ticket t7 = new Ticket(007, c7, d7 , f2, 2,"Evening Early", 1);
+	Ticket t8 = new Ticket(8, c8, d8 , f3, 2,"Evening Late", 1);
+	Ticket t9 = new Ticket(9, c9, d9 , f2, 2,"Morning", 2);
+	Ticket t10 = new Ticket(010, c10, d10 , f2, 2,"Afternoon", 2);
+	Ticket t11 = new Ticket(011, c11, d11 , f1, 2,"Evening Early", 2);
+	Ticket t12 = new Ticket(012, c12, d12 , f1, 2,"Evening Late", 2);
+	Ticket t13 = new Ticket(013, c13, d13 , f2,2,"Morning", 2);
+	Ticket t14 = new Ticket(014, c14, d14 , f1, 2,"Afternoon", 2);
+	Ticket t15 = new Ticket(015, c15, d15, f1, 2,"Evening Early", 2);
 	
 	
-	// data for 6 screens
-	//Screen s1 = new Screen(1);
-	//Screen s2 = new Screen(2);
-	//Screen s3 = new Screen(3);
-	//Screen s4 = new Screen(4);
-	//Screen s5 = new Screen(5);
-	//Screen s6 = new Screen(6);
+	Review r1 = new Review (t1,f1,d1, 4, "Not a good film");
+	Review r2 = new Review (t2,f1,d2,2, "Poor film");
+	Review r3 = new Review (t3,f3,d3,3, "Okay film");
+	Review r4 = new Review (t4,f4,d4,4, "Good film");
+	Review r5 = new Review (t5,f5,d5,5, "Great film");
+	Review r6 = new Review (t6,f1,d6,1, "Not a good film");
+	Review r7 = new Review (t7,f2,d7,2, "Poor film");
+	Review r8 = new Review (t8,f3,d8,3, "Yeh it was allright...");
+	Review r9 = new Review (t9,f1,d9,4, "I liked it");
+	Review r10 = new Review (t10,f1,d10,5, "The best ever");
 	
+
 	
 	public void addCustomers()
 	{
@@ -129,23 +149,7 @@ public class TestInsert {
 
 	public void addTickets()
 	{
-		Ticket t1 = new Ticket(001, c1, d1, f2, 1,"Morning", 1); // ticket for customer1, vip
-		Ticket t2 = new Ticket(002, c2, d2, f2, 2,"Afternoon", 1); //ticket for customer2, vip
-		Ticket t3 = new Ticket(003, c3, d3, f3, 1,"Evening Early", 1); // ticket for customer3, vip
-		Ticket t4 = new Ticket(004, c4, d4 , f4, 1,"Evening Late", 1); // ticket for customer 4, vip
-		Ticket t5 = new Ticket(005, c5, d5 , f5, 1,"Morning", 1); // // ticket for customer 5, vip
-		Ticket t6 = new Ticket(006, c6, d6 , f1, 1,"Afternoon", 1);
-		Ticket t7 = new Ticket(007, c7, d7 , f2, 2,"Evening Early", 1);
-		Ticket t8 = new Ticket(8, c8, d8 , f3, 2,"Evening Late", 1);
-		Ticket t9 = new Ticket(9, c9, d9 , f2, 2,"Morning", 2);
-		Ticket t10 = new Ticket(010, c10, d10 , f2, 2,"Afternoon", 2);
-		Ticket t11 = new Ticket(011, c11, d11 , f3, 2,"Evening Early", 2);
-		Ticket t12 = new Ticket(012, c12, d12 , f1, 2,"Evening Late", 2);
-		Ticket t13 = new Ticket(013, c13, d13 , f2,2,"Morning", 2);
-		Ticket t14 = new Ticket(014, c14, d14 , f1, 2,"Afternoon", 2);
-		Ticket t15 = new Ticket(015, c15, d15, f2, 2,"Evening Early", 2);
-	
-	
+
 		ticketList.add(t1);
 		ticketList.add(t2);
 		ticketList.add(t3);
@@ -165,17 +169,7 @@ public class TestInsert {
 	
 	public void addReviews()
 	{
-		Review r1 = new Review (c1,f1,d1, 4, "Not a good film");
-		Review r2 = new Review (c2,f1,d2,2, "Poor film");
-		Review r3 = new Review (c3,f3,d3,3, "Okay film");
-		Review r4 = new Review (c4,f4,d4,4, "Good film");
-		Review r5 = new Review (c5,f5,d5,5, "Great film");
-		Review r6 = new Review (c6,f1,d6,1, "Not a good film");
-		Review r7 = new Review (c7,f2,d7,2, "Poor film");
-		Review r8 = new Review (c8,f3,d8,3, "Yeh it was allright...");
-		Review r9 = new Review (c9,f1,d9,4, "I liked it");
-		Review r10 = new Review (c10,f1,d10,5, "The best ever");
-	
+		
 		reviewList.add(r1);
 		reviewList.add(r2);
 		reviewList.add(r3);
@@ -226,7 +220,7 @@ public class TestInsert {
 	// method to get 2nd report as requested in coursework
 	public void report2()
 	{
-		// create here a method to get last month - then how many tickets have been in that month
+		
 		double x;
 		String name;
 		for(Film f: filmList)
@@ -234,26 +228,27 @@ public class TestInsert {
 			x = f.getIncome();
 			name = f.getFilmName();
 			incomeEarnt.put(name, x);
-		//	incomeEarnt.forEach((key, value) -> System.out.println("Film = " + key + "Income Earnt= " + value));
 		}
 		System.out.println("------------------------------------------------------------");
 		System.out.println("//OUTPUT REPORT 2//");
 		System.out.println();
 		System.out.println("The current month is:  " + new SimpleDateFormat("MMMMMMMMM").format(cal.getTime()));
 		
-		Map<String, Double> map = new TreeMap<String, Double>(incomeEarnt); 
-        		System.out.println("The order of Films and their list of incomes this month are below:");
-        		Set set2 = map.entrySet();
-        		Iterator iterator2 = set2.iterator();
-        		while(iterator2.hasNext()) {
-             Map.Entry me2 = (Map.Entry)iterator2.next();
-             	System.out.print(me2.getKey() + ": ");
-             	System.out.println(me2.getValue());
-   	
+		// process to print out each film and their total income for this month
+			Map<String, Double> map = new TreeMap<String, Double>(incomeEarnt); 
+	        		System.out.println("The order of Films and their list of incomes this month are below:");
+	        		Set set2 = map.entrySet();
+	        		Iterator iterator2 = set2.iterator();
+	        		while(iterator2.hasNext()) {
+	             Map.Entry me2 = (Map.Entry)iterator2.next();
+	             	System.out.print(me2.getKey() + ": ");
+	             	System.out.println(me2.getValue());
         		}
+	        	// process to print out 	
+        		String a = incomeEarnt.entrySet().stream().max((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1).get().getKey();
+
         		System.out.println();
-        		System.out.println("The highest grossing films is:");
-        		System.out.println(((TreeMap<String, Double>) map).firstKey());
+        		System.out.println("The highest grossing films is:" + a);
         		System.out.println("------------------------------------------------------------");
 	        
 	    }

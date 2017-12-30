@@ -24,7 +24,6 @@ public class TestFile {
 		testInsert.addTickets();
 		System.out.println("Tickets added");
 		
-		
 		System.out.println("Attempting review load");
 		testInsert.addReviews();
 		

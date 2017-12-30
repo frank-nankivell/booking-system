@@ -3,23 +3,17 @@ public class Ticket {
 	
 
 	private Film film;
-	
+
 	private Customer customer;
-
 	private Date date;
-
 	private int ticketID;
-
-	private int paymentType;
-	
+	private int paymentType;	
 	private double price;
-
 	private double time;
-
 	private boolean check;
-	
 	private String month;
 	
+	private int customerBal;
 
 	// Constructor for Ticket class
     public Ticket (int ticketID, Customer customer, Date date, Film film, int seat, String time, int paymentType) // 
@@ -124,19 +118,19 @@ public class Ticket {
 					{
 						case 1:
 						System.out.println("Credit Card Payment chosen");
-						Payment p = new Payment(this.customer,this.date,this.film, price);
+						CashPayment p = new CashPayment(this.customer,this.date,this.film, price);
 						p.makePayment(customer.getCreditcard());
 						ticketBooked();
-					//	printTicket();
+						printTicket();
 						
 						break;
 						
 						case 2:
 						System.out.println("Cash Payment chosen");
-						Payment p2 = new Payment(this.customer,this.date,this.film, price);
+						CreditCardPayment p2 = new CreditCardPayment(this.customer,this.date,this.film, price);
 						p2.makePayment(customer.getCreditcard());
 						ticketBooked();
-					//	printTicket();
+						printTicket();
 						break;
 					}
 		   	      }
@@ -149,19 +143,13 @@ public class Ticket {
 			return true;
 		}
 		// accessor ticketID
-		/**
-		 * @return
-		 * @uml.property  name="ticketID"
-		 */
+	
 		public int getTicketID() {
 			return ticketID;
 		}
 
 		// mutator ticketID
-		/**
-		 * @param ticketID
-		 * @uml.property  name="ticketID"
-		 */
+
 		public void setTicketID(int ticketID) {
 			this.ticketID = ticketID;
 		}
@@ -186,6 +174,16 @@ public class Ticket {
 				
 
 			}
+		}
+
+
+		public int getCustomerBal() {
+			return customerBal;
+		}
+
+
+		public void setCustomerBal(int customerBal) {
+			this.customerBal = customerBal;
 		}
 
 
